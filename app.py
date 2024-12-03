@@ -12,7 +12,7 @@ CORS(app)
 app.secret_key = 'your_secret_key'
 
 # Telegram Bot Configuration
-TELEGRAM_BOT_TOKEN = '8152608892:AAF9glppy5wajKlX9hZN04QOPm1VC82p7BI'  # Replace with your actual Bot Token
+TELEGRAM_BOT_TOKEN = '7507087338:AAEbwmPscwxqzLVL-r8ifTK0P0aP1bQURlU'  # Replace with your actual Bot Token
 bot = telegram.Bot(token=TELEGRAM_BOT_TOKEN)
 
 # File to store chat IDs and offset
